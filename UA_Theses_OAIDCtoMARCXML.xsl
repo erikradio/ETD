@@ -138,9 +138,7 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 			</datafield>-->
 			<xsl:for-each select="dc:rights">
 				<datafield tag="540" ind1=" " ind2=" ">
-					<subfield code="a">
-<xsl:value-of select="normalize-space(.)" />.
-</subfield>
+					<subfield code="a"><xsl:value-of select="normalize-space(.)" /></subfield>
 				</datafield>
 			</xsl:for-each>
 			<!--<xsl:for-each select="dc:language">
