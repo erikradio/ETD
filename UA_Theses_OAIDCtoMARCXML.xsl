@@ -86,8 +86,8 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 			<xsl:choose>
 				<xsl:when test="$date1">
 					<datafield tag="264" ind1=" " ind2="1">
-						<subfield code="a">Tucson, Arizona</subfield>
-						<subfield code="b">University of Arizona,</subfield>
+						<subfield code="a">Tucson, Arizona</subfield>:
+						<subfield code="b">University of Arizona</subfield>,
 						<subfield code="c"><xsl:value-of select="$date1" />.</subfield>
 					</datafield>
 				</xsl:when>
