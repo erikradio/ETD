@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/
 http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns="http://www.loc.gov/MARC21/slim" exclude-result-prefixes="dc dcterms oai_dc">
-	<xsl:import href="MARC21slimUtils.xsl" />
+	<!--<xsl:import href="MARC21slimUtils.xsl" />-->
 	<xsl:output method="xml" encoding="UTF-8" indent="yes" />
 	<xsl:template match="/">
 		<collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
