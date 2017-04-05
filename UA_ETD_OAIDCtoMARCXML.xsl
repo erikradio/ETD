@@ -37,7 +37,7 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 		<record>
 			<!--<leader>02211ntm a2200289Ia 45 0</leader>-->
 			<!--  <controlfield tag="001"><xsl:value-of select="$scontrol" /></controlfield>-->
-			<controlfield tag="008">      s<xsl:value-of select="$date1"/>    azu    gom   a000   <xsl:value-of select="$lang"/>od</controlfield>
+			<controlfield tag="008">      s<xsl:value-of select="$date1"/>    azu    gom   a000   <xsl:value-of select="$lang"/> d</controlfield>
 			<!--<xsl:for-each select="dc:identifier">
 <datafield tag="024" ind1="8" ind2=" ">
 <subfield code="a">
@@ -162,11 +162,19 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 				</xsl:if>
 				<xsl:if test="contains(.,'Dissertation')">
 					<datafield tag="655" ind1=' ' ind2='4'>
-						<subfield code='a'>Thesis</subfield>
+						<subfield code='a'>Dissertation</subfield>
 					</datafield>
 				</xsl:if>
 			</xsl:for-each>
-			
+			<xsl:for-each select="dc:contributor">
+				<datafield tag="700" ind1="1" ind2="0">
+					<subfield code="a">
+						<xsl:value-of select="normalize-space(.)" />
+					</subfield>
+					<subfield code="e">Contributor</subfield>
+					<subfield code="4">ctb</subfield>
+				</datafield>
+			</xsl:for-each>
 			<!--<xsl:for-each select="dc:language">
 <datafield tag="546" ind1=" " ind2=" ">
 <subfield code="a">
@@ -191,15 +199,7 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 </datafield>
 </xsl:for-each>-->
 
-			<xsl:for-each select="dc:contributer">
-				<datafield tag="700" ind1="1" ind2="0">
-					<subfield code="a">
-						<xsl:value-of select="normalize-space(.)" />
-					</subfield>
-					<subfield code="e">Contributor</subfield>
-					<subfield code="4">ctb</subfield>
-				</datafield>
-			</xsl:for-each>
+			
 			
 			<!--<xsl:for-each select="dc:source">
 <datafield tag="786" ind1="0" ind2=" ">
