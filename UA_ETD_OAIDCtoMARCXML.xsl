@@ -86,7 +86,7 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 			<xsl:choose>
 				<xsl:when test="$date1">
 					<datafield tag="264" ind1=" " ind2="1">
-						<subfield code="a">Tucson, Arizona</subfield>
+						<subfield code="a">Tucson, Arizona:</subfield>
 						<subfield code="b">University of Arizona,</subfield>
 						<subfield code="c"><xsl:value-of select="$date1" />.</subfield>
 					</datafield>
@@ -150,7 +150,7 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 			<xsl:for-each select="dc:rights">
 				<datafield tag="540" ind1=" " ind2=" ">
 					<subfield code="a">
-<xsl:value-of select="normalize-space(.)" />.
+<xsl:value-of select="normalize-space(.)" />
 </subfield>
 				</datafield>
 			</xsl:for-each>
@@ -167,13 +167,15 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 				</xsl:if>
 			</xsl:for-each>
 			<xsl:for-each select="dc:contributor">
-				<datafield tag="700" ind1="1" ind2="0">
-					<subfield code="a">
-						<xsl:value-of select="normalize-space(.)" />
-					</subfield>
-					<subfield code="e">Contributor</subfield>
-					<subfield code="4">ctb</subfield>
-				</datafield>
+				
+					<datafield tag="700" ind1="1" ind2="0">
+						<subfield code="a">
+							<xsl:value-of select="normalize-space(.)" />,
+						</subfield>
+						<subfield code="e">Contributor</subfield>
+						<!--<subfield code="4">ctb</subfield>-->
+					</datafield>
+					
 			</xsl:for-each>
 			<!--<xsl:for-each select="dc:language">
 <datafield tag="546" ind1=" " ind2=" ">
