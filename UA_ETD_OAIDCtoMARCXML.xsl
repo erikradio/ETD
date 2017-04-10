@@ -51,6 +51,7 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 			<datafield tag="040" ind1=" " ind2=" ">
 				<subfield code="a">MiAaPQD</subfield>
 				<subfield code="c">AZU</subfield>
+				<subfield code="e">rda</subfield>
 			</datafield>
 			<datafield tag="049" ind1=" " ind2=" ">
 				<subfield code="a">AZUG</subfield>
@@ -61,9 +62,11 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 			<xsl:if test="dc:creator[1]">
 				<datafield tag="100" ind1="1" ind2=" ">
 					<subfield code="a">
-						<xsl:value-of select="dc:creator[1]" />
-						<xsl:if test="contains('.', substring(dc:creator[1], string-length(dc:creator[1]), 1))=false">.</xsl:if>
-					</subfield>
+						<xsl:value-of select="dc:creator[1]"/>
+						
+						<!--<xsl:if test="contains('.', substring(dc:creator[1], string-length(dc:creator[1]), 1))=false">.</xsl:if>-->
+					</subfield>,
+					<subfield code="e">Author.</subfield>
 				</datafield>
 			</xsl:if>
 			<xsl:if test="dc:title[1]">
@@ -168,11 +171,11 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 			</xsl:for-each>
 			<xsl:for-each select="dc:contributor">
 				
-					<datafield tag="700" ind1="1" ind2="0">
+					<datafield tag="700" ind1="1" ind2=" ">
 						<subfield code="a">
-							<xsl:value-of select="normalize-space(.)" />,
-						</subfield>
-						<subfield code="e">Contributor</subfield>
+							<xsl:value-of select="normalize-space(.)" />
+						</subfield>,
+						<subfield code="e">Contributor.</subfield>
 						<!--<subfield code="4">ctb</subfield>-->
 					</datafield>
 					
@@ -237,7 +240,7 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 					<subfield code="u">
 						<xsl:value-of select="normalize-space(dc:identifier[1])" />
 					</subfield>
-					<subfield code="z">Connect to this object online.</subfield>
+					<subfield code="z">Find on the web.</subfield>
 					<!--<xsl:if test="dc:format[2]">
 						<subfield code="q">
 							<xsl:value-of select="dc:format[2]" />
