@@ -7,6 +7,26 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 	xmlns="http://www.loc.gov/MARC21/slim" exclude-result-prefixes="dc dcterms oai_dc">
 	<!--<xsl:import href="MARC21slimUtils.xsl" />-->
 	<xsl:output method="xml" encoding="UTF-8" indent="yes" />
+	<!--<xsl:template name="contrib" match="dc:contributor">
+		<xsl:variable name="length" select="string-length(.)"/>
+		<xsl:for-each select=".">
+			
+		<xsl:choose>
+			<xsl:when test="not(substring(.,$length) = '.')">
+				<datafield tag="700" ind1="1" ind2=" ">
+				<subfield code="a">
+					<xsl:value-of select="translate(.,.,'%')"/>
+				</subfield>,
+				<subfield code="e">Contributor.</subfield>
+				</datafield>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="."/>
+			</xsl:otherwise>
+		</xsl:choose>
+		</xsl:for-each>
+		
+	</xsl:template>-->
 	<xsl:template match="/">
 		<collection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
 			<xsl:apply-templates />
@@ -62,11 +82,11 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 			<xsl:if test="dc:creator[1]">
 				<datafield tag="100" ind1="1" ind2=" ">
 					<subfield code="a">
-						<xsl:value-of select="dc:creator[1]"/>
+						<xsl:value-of select="translate(dc:creator[1],'.',',')"/>
 						
 						<!--<xsl:if test="contains('.', substring(dc:creator[1], string-length(dc:creator[1]), 1))=false">.</xsl:if>-->
-					</subfield>,
-					<subfield code="e">Author.</subfield>
+					</subfield>
+					<subfield code="e">author.</subfield>
 				</datafield>
 			</xsl:if>
 			<xsl:if test="dc:title[1]">
@@ -169,14 +189,16 @@ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:xsl="http://www.w3.org/199
 					</datafield>
 				</xsl:if>
 			</xsl:for-each>
+			
 			<xsl:for-each select="dc:contributor">
-				
-					<datafield tag="700" ind1="1" ind2=" ">
+			
+				<datafield tag="700" ind1="1" ind2=" ">
 						<subfield code="a">
-							<xsl:value-of select="normalize-space(.)" />
-						</subfield>,
-						<subfield code="e">Contributor.</subfield>
-						<!--<subfield code="4">ctb</subfield>-->
+							<xsl:value-of select="normalize-space(.)" />,
+						</subfield>
+						<subfield code="e">contributor.</subfield>
+					
+						
 					</datafield>
 					
 			</xsl:for-each>
